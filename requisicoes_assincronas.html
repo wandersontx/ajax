@@ -48,11 +48,25 @@
 		<script type="text/javascript">
 
 			function requisitarPagina(url){
-
 				let ajax = new XMLHttpRequest();
+
+				//requisição não iniciada, state = 0
+				console.log(ajax.readyState)
+
+				//conexao estabelecida com o servidor, state = 1
 				ajax.open('GET',url)
+				console.log(ajax.readyState)
+
+				//state 2,3 e 4 são processados do lado do servidor
+				//metodo para captar mudanças de state
+				ajax.onreadystatechange = ()=>{
+					console.log(ajax.readyState)
+				}
+
+				// Na pratica utilizamos mais o state 4, pois indica que a requisição foi finalizada. Isso não significa que obteve a resposta desejada, somente indica que o servidor terminou seu trabalho
+
+
 				ajax.send()
-				console.log(ajax)
 			}
 		</script>
 	</body>
