@@ -21,7 +21,7 @@
 			</div>
 		</div>
 	</div>
-
+<script src="xmltojson.js"></script>
 <script type="text/javascript">
 	function getFilmes(){
 
@@ -30,7 +30,11 @@
 		xmlHttp.onreadystatechange = ()=>{
 			if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
 				let xmlFilmes = xmlHttp.responseText
-				console.log(xmlFilmes)
+				
+				let parser = new DOMParser()
+				domFilmes = parser.parseFromString(xmlFilmes, 'text/xml')
+				jsonFilmes = xmlToJson(domFilmes)
+				console.log(jsonFilmes)
 			}
 			if(xmlHttp.readyState == 4 && xmlHttp.status == 404){
 				let xmlFilmes = "Página não encontrada"
