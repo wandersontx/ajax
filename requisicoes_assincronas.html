@@ -47,8 +47,7 @@
 		</div>	
 		<script type="text/javascript">
 
-			function requisitarPagina(url){
-				
+			function requisitarPagina(url){			
 
 				if(!document.getElementById('loading')){
 					let imgLoading = document.createElement('img')
@@ -70,7 +69,7 @@
 			
 				ajax.onreadystatechange = () => {
 					if(ajax.readyState == 4 && ajax.status == 200) {
-						document.getElementById('conteudo').innerHTML = 'Requisição finalizada com sucesso'
+						document.getElementById('conteudo').innerHTML = ajax.responseText
 						console.log('requisição finalizada com sucesso')			
 						
 					}	
