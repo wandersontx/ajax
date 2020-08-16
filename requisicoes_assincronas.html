@@ -48,6 +48,8 @@
 		<script type="text/javascript">
 
 			function requisitarPagina(url){
+				
+
 				if(!document.getElementById('loading')){
 					let imgLoading = document.createElement('img')
 					imgLoading.id = 'loading'
@@ -67,10 +69,11 @@
 
 			
 				ajax.onreadystatechange = () => {
-					if(ajax.readyState == 4) {
-						console.log('requisição finalizada com sucesso')
-						document.getElementById('loading').remove()
-					}
+					if(ajax.readyState == 4 && ajax.status == 200) {
+						document.getElementById('conteudo').innerHTML = 'Requisição finalizada com sucesso'
+						console.log('requisição finalizada com sucesso')			
+						
+					}	
 				}
 
 
